@@ -2,15 +2,16 @@ package techcamp.racingcar;
 
 public class RacingCar {
 
+    public static final int DISTANCE_PER_FREQUENCY = 1;
     private int distance = 0;
 
-    public int getDistance() {
-        return distance;
+    public void move(MoveStatus moveStatus) {
+        if(moveStatus.isMove()) {
+            distance += DISTANCE_PER_FREQUENCY;
+        }
     }
 
-    public void move(MoveStatus moveStatus) {
-        if(moveStatus == MoveStatus.MOVE) {
-            distance += 1;
-        }
+    public int getTotalDistance() {
+        return distance;
     }
 }

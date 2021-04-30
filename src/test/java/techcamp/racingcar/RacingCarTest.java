@@ -1,6 +1,7 @@
 package techcamp.racingcar;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,15 +15,29 @@ class RacingCarTest {
         racingCar = new RacingCar();
     }
 
+    @DisplayName("레이싱카_정지")
     @Test
-    void 전진조건_중지() {
+    void racingCar_stop() {
         racingCar.move(MoveStatus.STOP);
-        assertEquals(0, racingCar.getDistance());
+        assertEquals(0, racingCar.getTotalDistance());
+
+        racingCar.move(MoveStatus.STOP);
+        assertEquals(0, racingCar.getTotalDistance());
+
+        racingCar.move(MoveStatus.STOP);
+        assertEquals(0, racingCar.getTotalDistance());
     }
 
+    @DisplayName("레이싱카_전진")
     @Test
-    void 전진조건_전진() {
+    void racingCar_move() {
         racingCar.move(MoveStatus.MOVE);
-        assertEquals(1, racingCar.getDistance());
+        assertEquals(1, racingCar.getTotalDistance());
+
+        racingCar.move(MoveStatus.MOVE);
+        assertEquals(2, racingCar.getTotalDistance());
+
+        racingCar.move(MoveStatus.MOVE);
+        assertEquals(3, racingCar.getTotalDistance());
     }
 }
