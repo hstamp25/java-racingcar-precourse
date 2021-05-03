@@ -4,15 +4,27 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
 
     private RacingCar racingCar;
+    private RandomInput randomInput;
 
     @BeforeEach
     void setUp() {
         racingCar = new RacingCar();
+    }
+
+    @DisplayName("레이싱카_랜덤기능")
+    @Test
+    void racingCar_random_move() {
+        randomInput = new RandomInput();
+        racingCar.move(randomInput.getMoveStatus());
+
+        assertTrue(racingCar.getTotalDistance() == 0 || racingCar.getTotalDistance() == 1);
     }
 
     @DisplayName("레이싱카_정지")
