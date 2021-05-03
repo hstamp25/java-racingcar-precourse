@@ -9,33 +9,32 @@ import static org.junit.jupiter.api.Assertions.*;
 class RacingCarTest {
 
     private RacingCar racingCar;
-    private RandomInput randomInput;
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar();
+        racingCar = new RacingCar("레이싱카");
     }
 
     @DisplayName("레이싱카_이름_길이예외")
     @Test
     void racingCar_name_exception() {
-        assertThrows(IllegalArgumentException.class, () -> {
-            racingCar.setName("레이싱카_1");
-        });
+        assertThrows(IllegalArgumentException.class, () -> racingCar = new RacingCar("레이싱카_1"));
     }
 
     @DisplayName("레이싱카_이름")
     @Test
     void racingCar_name() {
-        racingCar.setName("레이싱카1");
+        racingCar = new RacingCar("레이싱카1");
+        assertTrue(racingCar.getName().length() <= 5);
 
+        racingCar = new RacingCar("");
         assertTrue(racingCar.getName().length() <= 5);
     }
 
     @DisplayName("레이싱카_랜덤기능")
     @Test
     void racingCar_random_move() {
-        randomInput = new RandomInput();
+        RandomInput randomInput = new RandomInput();
         racingCar.move(randomInput.getMoveStatus());
 
         assertTrue(racingCar.getTotalDistance() == 0 || racingCar.getTotalDistance() == 1);
