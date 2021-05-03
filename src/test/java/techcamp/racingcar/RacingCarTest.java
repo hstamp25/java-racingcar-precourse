@@ -4,8 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Random;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class RacingCarTest {
@@ -16,6 +14,22 @@ class RacingCarTest {
     @BeforeEach
     void setUp() {
         racingCar = new RacingCar();
+    }
+
+    @DisplayName("레이싱카_이름_길이예외")
+    @Test
+    void racingCar_name_exception() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            racingCar.setName("레이싱카_1");
+        });
+    }
+
+    @DisplayName("레이싱카_이름")
+    @Test
+    void racingCar_name() {
+        racingCar.setName("레이싱카1");
+
+        assertTrue(racingCar.getName().length() <= 5);
     }
 
     @DisplayName("레이싱카_랜덤기능")
