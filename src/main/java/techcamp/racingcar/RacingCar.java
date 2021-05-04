@@ -1,11 +1,11 @@
 package techcamp.racingcar;
 
-public class RacingCar {
+public class RacingCar implements Comparable<RacingCar> {
 
     public static final int DISTANCE_PER_FREQUENCY = 1;
     public static final String DISTANCE_TEXT = "-";
     private int distance = 0;
-    private String name;
+    private final String name;
 
     public RacingCar(String name) {
         if (name.length() > 5) {
@@ -35,5 +35,10 @@ public class RacingCar {
 
     public int getTotalDistance() {
         return distance;
+    }
+
+    @Override
+    public int compareTo(RacingCar car) {
+        return Integer.compare(car.getTotalDistance(), this.distance);
     }
 }

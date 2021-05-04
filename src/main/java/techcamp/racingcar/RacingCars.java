@@ -2,6 +2,8 @@ package techcamp.racingcar;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 public class RacingCars {
 
@@ -21,5 +23,17 @@ public class RacingCars {
     private void move() {
         RandomInput randomInput = new RandomInput();
         racingCars.forEach(car -> car.move(randomInput.getMoveStatus()));
+    }
+
+    public void getFinalResult() {
+        List<RacingCar> racingCarList = racingCars
+                .stream()
+                .collect(Collectors.groupingBy(RacingCar::getTotalDistance, TreeMap::new, Collectors.toList()))
+                .lastEntry()
+                .getValue();
+
+        String result = racingCarList.stream().map(RacingCar::getName).collect(Collectors.joining(", "))
+                + "가 최종 우승했습니다.";
+        System.out.println(result);
     }
 }

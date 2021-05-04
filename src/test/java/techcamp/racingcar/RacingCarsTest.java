@@ -17,6 +17,7 @@ public class RacingCarsTest {
         RacingCar racingCar_3 = new RacingCar("레이싱카3");
         racingCars.add(racingCar_3);
 
-        racingCars.moves(2);
+        racingCars.moves(3);
+        racingCars.getFinalResult();
     }
 }
