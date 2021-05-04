@@ -3,6 +3,7 @@ package techcamp.racingcar;
 public class RacingCar {
 
     public static final int DISTANCE_PER_FREQUENCY = 1;
+    public static final String DISTANCE_TEXT = "-";
     private int distance = 0;
     private String name;
 
@@ -18,9 +19,18 @@ public class RacingCar {
     }
 
     public void move(MoveStatus moveStatus) {
-        if(moveStatus.isMove()) {
+        if (moveStatus.isMove()) {
             distance += DISTANCE_PER_FREQUENCY;
         }
+        printResult();
+    }
+
+    private void printResult() {
+        System.out.print(name + ": ");
+        for (int i = 0; i < distance; i++) {
+            System.out.print(DISTANCE_TEXT);
+        }
+        System.out.println(" ");
     }
 
     public int getTotalDistance() {

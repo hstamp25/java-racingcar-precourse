@@ -13,7 +13,7 @@ public class RandomInput {
 
     Random random = new Random();
 
-    public RandomInput() {
+    public MoveStatus getMoveStatus() {
         randomInt = random.nextInt(MOVE_MAX) + MOVE_MIN;
         if (randomInt >= MOVE_REFERENCE) {
             moveStatus = MoveStatus.MOVE;
@@ -21,9 +21,6 @@ public class RandomInput {
         if (randomInt < MOVE_REFERENCE) {
             moveStatus = MoveStatus.STOP;
         }
-    }
-
-    public MoveStatus getMoveStatus() {
         return moveStatus;
     }
 }
